@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteSized Odyssey — Official Brand & Links</title>
+  <meta name="description" content="Exploring gadgets, anime, manga, travel vlogs, collectibles, and gaming — one byte-sized adventure at a time.">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #141c2e;
+      --card-hover: #1b263e;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --badge-bg: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 48px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar-ring {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .avatar-text {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #ffffff;
+      user-select: none;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .tagline {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .bio {
+      margin-top: 14px;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      background: var(--badge-bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 36px 0 14px;
+      font-weight: 700;
+    }
+
+    .links-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-link {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .card-link:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .card-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon-box {
+      font-size: 1.35rem;
+      width: 32px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link-details {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .link-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .link-handle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .card-link:hover .arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 12px;
+    }
+
+    .story-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-card strong {
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar-wrapper">
+        <div class="avatar-ring">
+          <span class="avatar-text">BO</span>
+        </div>
+      </div>
+      <h1>ByteSized Odyssey</h1>
+      <div class="tagline">Gadgets • Travel • Anime • Gaming</div>
+      <p class="bio">Exploring cutting-edge tech, world travel, Japanese pop culture, and collectible unboxings — one byte-sized journey at a time.</p>
+      
+      <div class="tags">
+        <span class="tag">#Tech</span>
+        <span class="tag">#Travel</span>
+        <span class="tag">#Anime</span>
+        <span class="tag">#Manga</span>
+        <span class="tag">#Gaming</span>
+        <span class="tag">#Figures</span>
+      </div>
+    </header>
+
+    <div class="section-title">Official Media Channels</div>
+    <div class="links-grid">
+      <!-- YouTube -->
+      <a class="card-link" href="https://youtube.com/@bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">▶️</div>
+          <div class="link-details">
+            <span class="link-name">YouTube</span>
+            <span class="link-handle">@bytesizedodyssey • Long-form reviews & vlogs</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- TikTok -->
+      <a class="card-link" href="https://tiktok.com/@bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">🎵</div>
+          <div class="link-details">
+            <span class="link-name">TikTok</span>
+            <span class="link-handle">@bytesizedodyssey • Quick gear tests & hauls</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- Instagram -->
+      <a class="card-link" href="https://instagram.com/bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">📸</div>
+          <div class="link-details">
+            <span class="link-name">Instagram</span>
+            <span class="link-handle">@bytesizedodyssey • Photo dumps, reels & stories</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- Twitch -->
+      <a class="card-link" href="https://twitch.tv/bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">👾</div>
+          <div class="link-details">
+            <span class="link-name">Twitch</span>
+            <span class="link-handle">@bytesizedodyssey • Live unboxings & gaming streams</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- GitHub -->
+      <a class="card-link" href="https://github.com/bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">🐙</div>
+          <div class="link-details">
+            <span class="link-name">GitHub</span>
+            <span class="link-handle">@bytesizedodyssey • Setup configs & DIY blueprints</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- Threads -->
+      <a class="card-link" href="https://threads.net/@bytesizedodyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">🧵</div>
+          <div class="link-details">
+            <span class="link-name">Threads</span>
+            <span class="link-handle">@bytesizedodyssey • Daily observations & con updates</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- X / Twitter (15 Character Handle) -->
+      <a class="card-link" href="https://x.com/ByteSizeOdyssey" target="_blank" rel="noopener">
+        <div class="card-content">
+          <div class="icon-box">🐦</div>
+          <div class="link-details">
+            <span class="link-name">X (Twitter)</span>
+            <span class="link-handle">@ByteSizeOdyssey • Real-time tech & pop culture takes</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <!-- Inquiries / Email -->
+      <a class="card-link" href="mailto:bytesizedodyssey@gmail.com">
+        <div class="card-content">
+          <div class="icon-box">✉️</div>
+          <div class="link-details">
+            <span class="link-name">Business Inquiries</span>
+            <span class="link-handle">bytesizedodyssey@gmail.com</span>
+          </div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="section-title">Channel Philosophy</div>
+    <div class="story-card">
+      <p><strong>The Concept:</strong> The world is packed with remarkable gadgets, vibrant subcultures, and endless destinations to explore. <strong>ByteSized Odyssey</strong> represents curiosity without gatekeeping—covering everything from minimalist travel slings and portable handheld emulators to Akihabara figure hunts and high-end desk setups.</p>
+      <p>Whether you're looking for honest gear breakdowns, deep dives into upcoming anime seasons, or travel inspiration for your next journey, welcome aboard.</p>
+    </div>
+
+    <footer>
+      &copy; 2026 ByteSized Odyssey. All brand channels verified & registered.
+    </footer>
+  </div>
+</body>
+</html>
