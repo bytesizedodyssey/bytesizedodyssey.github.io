@@ -1,18 +1,18 @@
 # 🚀 ByteSized Odyssey (`bytesizedodyssey.github.io`)
 
-> Official Link-in-Bio and Landing Hub for **ByteSized Odyssey** — chronicling tech, portable gadgets, anime & manga hauls, collectible unboxings, gaming setups, and world travel.
+> Official link hub and home for **ByteSized Odyssey** — sharing adventures, cool gear, creative projects, pop culture finds, and fun experiences along the way.
 
 ---
 
-## 🌐 Live Website
-The live site is hosted via GitHub Pages:  
+## 🌐 Hub
+Explore the live page:  
 👉 **[https://bytesizedodyssey.github.io](https://bytesizedodyssey.github.io)**
 
 ---
 
-## 📡 Official Platform Directory
+## 📡 Official Channels
 
-| Platform | Handle / Username | Direct Link |
+| Platform | Channel | Link |
 | :--- | :--- | :--- |
 | **YouTube** | `@bytesizedodyssey` | [youtube.com/@bytesizedodyssey](https://youtube.com/@bytesizedodyssey) |
 | **TikTok** | `@bytesizedodyssey` | [tiktok.com/@bytesizedodyssey](https://tiktok.com/@bytesizedodyssey) |
@@ -21,24 +21,26 @@ The live site is hosted via GitHub Pages:
 | **Threads** | `@bytesizedodyssey` | [threads.net/@bytesizedodyssey](https://threads.net/@bytesizedodyssey) |
 | **X (Twitter)** | `@ByteSizeOdyssey` | [x.com/ByteSizeOdyssey](https://x.com/ByteSizeOdyssey) |
 | **GitHub** | `@bytesizedodyssey` | [github.com/bytesizedodyssey](https://github.com/bytesizedodyssey) |
-| **Email** | Business Inquiries | [bytesizedodyssey@gmail.com](mailto:bytesizedodyssey@gmail.com) |
+| **Contact** | Inquiries & Collabs | [bytesizedodyssey@gmail.com](mailto:bytesizedodyssey@gmail.com) |
 
 ---
 
-## 🧭 Content Pillars
+## 🧭 About the Channel
 
-* **Tech & EDC:** Pocket cameras, travel routers, power banks, and minimalist carry setups.
-* **Travel Vlogs:** Convention explorations, Tokyo tech and arcade walks, and itinerary recaps.
-* **Anime, Manga & Figures:** Unboxings, scale figures, manga store tours, and seasonal reviews.
-* **Gaming & Setups:** Handheld PC configs (Steam Deck/Switch), travel monitor rigs, and desk setups.
+ByteSized Odyssey is an open canvas for curiosity and play:
+
+* **Adventures & Places:** Travel vlogs, interesting spots, road trips, and daily explorations.
+* **Gear & Cool Things:** Portable setups, fun gadgets, desk upgrades, and tech that makes life more fun.
+* **Fandom & Finds:** Anime, manga, collectibles, movies, toys, and games.
+* **Projects & Experiments:** Creative setups, DIY builds, and behind-the-scenes tinkering.
 
 ---
 
-## 🛠️ Repository Setup & Local Development
+## 🛠️ Site Info
 
-This website is a zero-dependency, vanilla HTML5/CSS3 landing page.
+A lightweight, zero-dependency landing page hosted via GitHub Pages.
 
-1. **Clone the repository:**
+To test locally:
+1. Clone the repo:
    ```bash
    git clone [https://github.com/bytesizedodyssey/bytesizedodyssey.github.io.git](https://github.com/bytesizedodyssey/bytesizedodyssey.github.io.git)
-   cd bytesizedodyssey.github.io
