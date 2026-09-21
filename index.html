@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ByteSized Odyssey — Official Hub</title>
-  <meta name="description" content="ByteSized Odyssey: Adventures, fun gear, pop culture finds, gaming, and creative projects.">
+  <meta name="description" content="ByteSized Odyssey: A home for curiosity, adventures, and the things that make life fun.">
   <style>
     :root {
       --bg: #0b0f19;
-      --card-bg: #141c2e;
-      --card-hover: #1b263e;
+      --card-bg: rgba(20, 28, 46, 0.85);
+      --card-hover: rgba(27, 38, 62, 0.95);
       --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.25);
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --indigo-glow: rgba(99, 102, 241, 0.4);
       --text: #f8fafc;
       --muted: #94a3b8;
-      --border: #1e293b;
-      --badge-bg: #1e293b;
+      --border: rgba(30, 41, 59, 0.9);
+      --badge-bg: rgba(30, 41, 59, 0.7);
     }
 
     * {
@@ -34,11 +35,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Moving background canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .container {
       width: 100%;
       max-width: 680px;
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -46,53 +62,73 @@
       margin-bottom: 36px;
     }
 
-    .avatar-wrapper {
+    /* Full Name CSS Text Logo Emblem */
+    .logo-emblem {
       position: relative;
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 16px;
-    }
-
-    .avatar-ring {
       width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #0284c7, #6366f1);
+      max-width: 380px;
+      margin: 0 auto 24px;
+      padding: 22px 28px;
+      border-radius: 20px;
+      background: radial-gradient(circle at center, rgba(20, 28, 46, 0.95) 0%, rgba(11, 15, 25, 0.95) 100%);
+      border: 2px solid var(--accent);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 28px var(--accent-glow);
+      box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px var(--indigo-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .avatar-text {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ffffff;
-      user-select: none;
+    .logo-emblem:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 50px var(--accent), inset 0 0 30px var(--accent);
+    }
+
+    .logo-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .logo-subtitle {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 6px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      display: none; /* Hidden since full name is now in the custom logo emblem */
     }
 
     .tagline {
       display: inline-block;
-      margin-top: 6px;
-      font-size: 0.9rem;
+      margin-top: 2px;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
     }
 
     .bio {
       margin-top: 14px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -102,17 +138,18 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .tag {
       background: var(--badge-bg);
+      backdrop-filter: blur(8px);
       color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     .section-title {
@@ -120,7 +157,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--muted);
-      margin: 36px 0 14px;
+      margin: 40px 0 14px;
       font-weight: 700;
     }
 
@@ -132,6 +169,7 @@
 
     .card-link {
       background: var(--card-bg);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px 20px;
@@ -142,14 +180,14 @@
       color: var(--text);
       font-weight: 600;
       font-size: 0.95rem;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .card-link:hover {
       background: var(--card-hover);
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--accent-glow);
+      box-shadow: 0 6px 25px var(--accent-glow);
     }
 
     .card-content {
@@ -198,17 +236,20 @@
 
     .about-card {
       background: var(--card-bg);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
+      border-radius: 16px;
+      padding: 26px;
       margin-top: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      border-left: 4px solid var(--accent);
     }
 
     .about-card p {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
     }
 
     .about-card p:last-child {
@@ -216,12 +257,13 @@
     }
 
     .about-card strong {
-      color: var(--text);
+      color: #ffffff;
+      font-weight: 700;
     }
 
     footer {
       text-align: center;
-      margin-top: 48px;
+      margin-top: 54px;
       color: var(--muted);
       font-size: 0.85rem;
       border-top: 1px solid var(--border);
@@ -231,23 +273,25 @@
   </style>
 </head>
 <body>
+
+  <!-- Moving Mouse-Reactive Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
   <div class="container">
     <header>
-      <div class="avatar-wrapper">
-        <div class="avatar-ring">
-          <span class="avatar-text">BO</span>
-        </div>
+      <!-- Full Name Custom Styled CSS Logo Emblem -->
+      <div class="logo-emblem">
+        <div class="logo-title">ByteSized Odyssey</div>
+        <div class="logo-subtitle">Explore • Create • Play</div>
       </div>
-      <h1>ByteSized Odyssey</h1>
-      <div class="tagline">Explore • Create • Play</div>
-      <p class="bio">Sharing adventures, favorite finds, fun tech, stories, and the things that make life interesting.</p>
+
+      <p class="bio">A home for curiosity, adventures, and the things that make life fun.</p>
       
       <div class="tags">
-        <span class="tag">Adventures</span>
+        <span class="tag">Travel</span>
         <span class="tag">Tech & Gear</span>
-        <span class="tag">Anime & Manga</span>
-        <span class="tag">Gaming</span>
-        <span class="tag">Collectibles</span>
+        <span class="tag">Gaming & Anime</span>
+        <span class="tag">Side Projects</span>
       </div>
     </header>
 
@@ -271,7 +315,7 @@
           <div class="icon-box">🎵</div>
           <div class="link-details">
             <span class="link-name">TikTok</span>
-            <span class="link-handle">@bytesizedodyssey • Quick finds & daily moments</span>
+            <span class="link-handle">@bytesizedodyssey • Quick finds & moments</span>
           </div>
         </div>
         <span class="arrow">↗</span>
@@ -283,7 +327,7 @@
           <div class="icon-box">📸</div>
           <div class="link-details">
             <span class="link-name">Instagram</span>
-            <span class="link-handle">@bytesizedodyssey • Photos, clips & updates</span>
+            <span class="link-handle">@bytesizedodyssey • Photos & updates</span>
           </div>
         </div>
         <span class="arrow">↗</span>
@@ -295,7 +339,7 @@
           <div class="icon-box">👾</div>
           <div class="link-details">
             <span class="link-name">Twitch</span>
-            <span class="link-handle">@bytesizedodyssey • Live streams & game hangouts</span>
+            <span class="link-handle">@bytesizedodyssey • Live streams & gaming</span>
           </div>
         </div>
         <span class="arrow">↗</span>
@@ -307,19 +351,19 @@
           <div class="icon-box">🧵</div>
           <div class="link-details">
             <span class="link-name">Threads</span>
-            <span class="link-handle">@bytesizedodyssey • Casual thoughts & chats</span>
+            <span class="link-handle">@bytesizedodyssey • Casual thoughts</span>
           </div>
         </div>
         <span class="arrow">↗</span>
       </a>
 
       <!-- X (Twitter) -->
-      <a class="card-link" href="https://x.com/ByteSizeOdyssey" target="_blank" rel="noopener">
+      <a class="card-link" href="https://x.com/bytesizedodysse" target="_blank" rel="noopener">
         <div class="card-content">
           <div class="icon-box">🐦</div>
           <div class="link-details">
             <span class="link-name">X (Twitter)</span>
-            <span class="link-handle">@ByteSizeOdyssey • Updates & conversations</span>
+            <span class="link-handle">@bytesizedodysse • Updates & talk</span>
           </div>
         </div>
         <span class="arrow">↗</span>
@@ -352,13 +396,86 @@
 
     <div class="section-title">About</div>
     <div class="about-card">
-      <p><strong>ByteSized Odyssey</strong> is all about exploring whatever sparks genuine interest—whether it's traveling to a new city, testing out a cool gadget, diving into a favorite game or anime, or unboxing something unique.</p>
-      <p>No rigid scripts or complicated formats—just straightforward, enjoyable journeys, one byte at a time.</p>
+      <p>Welcome to <strong>ByteSized Odyssey</strong>!</p>
+      <p>A home for curiosity, adventures, and the things that make life fun, exploring everything from interesting gear and creative setups to travel stories, pop culture finds, and spontaneous side projects.</p>
+      <p>No strict schedules, just sharing genuine experiences whenever a new journey or idea comes along.</p>
     </div>
 
     <footer>
-      &copy; 2026 ByteSized Odyssey. Built with curiosity.
+      &copy; 2026 ByteSized Odyssey. All rights reserved.
     </footer>
   </div>
+
+  <!-- JavaScript for Interactive Mouse-Reactive Space Background -->
+  <script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let particles = [];
+
+    let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.targetX = (e.clientX - width / 2) / 40;
+      mouse.targetY = (e.clientY - height / 2) / 40;
+    });
+
+    // Create space particles / stars
+    const particleCount = Math.floor(window.innerWidth * window.innerHeight / 9000);
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 2.5 + 0.6,
+        density: (Math.random() * 25) + 5,
+        speedX: (Math.random() - 0.5) * 0.35,
+        speedY: (Math.random() - 0.5) * 0.35,
+        color: Math.random() > 0.4 ? '#38bdf8' : (Math.random() > 0.5 ? '#6366f1' : '#ffffff'),
+        alpha: Math.random() * 0.7 + 0.3
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      mouse.x += (mouse.targetX - mouse.x) * 0.05;
+      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        let renderX = p.x + (mouse.x * p.density / 10);
+        let renderY = p.y + (mouse.y * p.density / 10);
+
+        ctx.beginPath();
+        ctx.arc(renderX, renderY, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 </body>
 </html>
